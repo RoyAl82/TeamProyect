@@ -1,7 +1,9 @@
 #pragma once
-#include <string>
 
-using namespace std;
+#include <msclr\marshal_cppstd.h>
+
+
+using namespace System;
 
 
 ref class People
@@ -9,10 +11,10 @@ ref class People
 public:
 	People();
 	~People();
-	People(String name, String lastname);
+	People(String^ name, String^ lastname);
 private:
-	String name;
-	String lastname;
+	String^ name;
+	String^ lastname;
 
 };
 

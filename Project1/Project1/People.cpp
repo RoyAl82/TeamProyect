@@ -12,7 +12,7 @@ People::~People()
 {
 
 }
-People::People(String name, String lastname)
+People::People(String^ name, String^ lastname)
 {
 	this->name = name;
 	this->lastname = lastname;
