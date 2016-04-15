@@ -21,12 +21,18 @@
     <ClInclude Include="Visitor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LogForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="People.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Visitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LogForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
