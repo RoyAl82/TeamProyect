@@ -1,4 +1,7 @@
 #include "LogForm.h"
+#include "Visitor.h"
+#include "Display.h"
+
 
 
 using namespace System;

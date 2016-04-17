@@ -5,15 +5,27 @@
 People::People()
 {
 	name = "Not name provided.";
-	lastname = "Not lastname provided.";
+	
 }
 
 People::~People()
 {
 
 }
-People::People(String^ name, String^ lastname)
+People::People(String^ name)
 {
 	this->name = name;
-	this->lastname = lastname;
+	
 }
+
+void People::setName(String^ name)
+{
+	this->name = name;
+}
+
+
+String^ People::getName()
+{
+	return name;
+}
+
