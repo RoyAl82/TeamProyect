@@ -11,10 +11,18 @@ ref class People
 public:
 	People();
 	~People();
-	People(String^ name, String^ lastname);
+	People(String^ name);
+
+	void setName(String^ name);
+	
+
+	String^ getName();
+	
+
+
 private:
 	String^ name;
-	String^ lastname;
+	
 
 };
 

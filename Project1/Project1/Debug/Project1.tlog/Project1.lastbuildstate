@@ -1,2 +1,6 @@
 #TargetFrameworkVersion=v4.5.2:PlatformToolSet=v140:EnableManagedIncrementalBuild=true:VCToolArchitecture=Native32Bit:WindowsTargetPlatformVersion=8.1
+<<<<<<< HEAD
 Debug|Win32|C:\Users\Roicxy\Source\Repos\TeamProyect\Project1\|
+=======
+Debug|Win32|C:\Users\Roicxy\Documents\GitHub Repo\TeamProyect\Project1\|
+>>>>>>> refs/remotes/origin/master

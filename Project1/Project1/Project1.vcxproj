@@ -125,34 +125,50 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Display.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="LogForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="People.h" />
+    <ClInclude Include="Professor.h" />
     <ClInclude Include="Visitor.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Display.cpp" />
     <ClCompile Include="LogForm.cpp" />
     <ClCompile Include="People.cpp" />
+    <ClCompile Include="Professor.cpp" />
     <ClCompile Include="Visitor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+=======
+    <EmbeddedResource Include="Display.resx">
+      <DependentUpon>Display.h</DependentUpon>
+    </EmbeddedResource>
+>>>>>>> refs/remotes/origin/master
     <EmbeddedResource Include="LogForm.resx">
       <DependentUpon>LogForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+<<<<<<< HEAD
   <ItemGroup>
     <None Include="sqlite3.def">
       <FileType>DEF</FileType>
     </None>
   </ItemGroup>
+=======
+>>>>>>> refs/remotes/origin/master
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -1,5 +1,11 @@
 ﻿  LogForm.cpp
+<<<<<<< HEAD
   Visitor.cpp
 c1xx : fatal error C1083: Cannot open source file: 'Visitor.cpp': No such file or directory
   Generating Code...
 c:\users\roicxy\source\repos\teamproyect\project1\project1\logform.h(95): warning C4700: uninitialized local variable 'db1' used
+=======
+  Display.obj : /DEBUG:FASTLINK is not supported when managed code is present; restarting link with /DEBUG:FULL
+  Project1.vcxproj -> C:\Users\Roicxy\Documents\GitHub Repo\TeamProyect\Project1\Debug\Project1.exe
+  Project1.vcxproj -> C:\Users\Roicxy\Documents\GitHub Repo\TeamProyect\Project1\Debug\Project1.pdb (Partial PDB)
+>>>>>>> refs/remotes/origin/master
