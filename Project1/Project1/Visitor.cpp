@@ -51,3 +51,11 @@ String^ Visitor::getHourOfVisit()
 {
 	return hourOfVisit;
 }
+void Visitor::setProfessorName(String^ professorName)
+{
+	this->professorName = professorName;
+}
+String^ Visitor::getProfessorName()
+{
+	return professorName;
+}
