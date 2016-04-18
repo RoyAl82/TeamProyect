@@ -323,6 +323,7 @@ private: void professorAvailability()
 private: String^ professorName()
 {
 
+
 	if(myProfessor.getName() == this->comboBox1->Text)
 	{
 
