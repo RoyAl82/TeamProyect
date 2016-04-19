@@ -1,6 +1,7 @@
 #pragma once
 #include "Visitor.h"
 #include "Professor.h"
+#include "Display.h"
 
 
 
@@ -74,9 +75,13 @@ namespace Project1 {
 		/// </summary>
 
 		Visitor myVisitor;
-		Professor myProfessor;
 
-		Stream^ file;
+		const int PROFESSOR_SIZE = 20;
+
+		
+
+		array< Professor^ >^ myProfessor = gcnew array< Professor^ >(PROFESSOR_SIZE);
+
 
 		
 		
@@ -289,45 +294,105 @@ private: System::Void btnSubmit_Click(System::Object^  sender, System::EventArgs
 	myVisitor.setPurpose(this->comboBox2->Text);
 	myVisitor.setDateOfVisit(System::DateTime::Now.ToString());
 	myVisitor.setHourOfVisit(System::DateTime::Now.ToShortTimeString());
-	myProfessor.setOfficeHoursDate("Sunday");
+
+	array<String^>^ date = gcnew array<String^>(3);
+	date[0] = "Sunday";
+	date[1] = "Monday";
+	date[2] = "Tuesday";
+	array<String^>^ timeFrom = gcnew array<String^>(date->Length);
+
+	timeFrom[0] = "12:00 AM";
+	timeFrom[1] = "11:00 AM";
+	timeFrom[2] = "1:00 PM";
+
+	array<String^>^ timeTo = gcnew array<String^>(date->Length);
+
+	timeTo[0] = "1:00 PM";
+	timeTo[1] = "12:00 AM";
+	timeTo[2] = "2:00 PM";
+
+	String^ name = "Pedro";
+
+
+	myProfessor[0]->setName(name);
+
+	myProfessor[0]->setOfficeHoursDate(date);
+
+	myProfessor[0]->setOfficeHoursFrom(timeFrom);
+
+	myProfessor[0]->setOfficeHoursTo(timeTo);
+
 
 	professorAvailability();
 
 	
-	myProfessor.setName(this->comboBox1->Text);
+	myProfessor[0]->setName(this->comboBox1->Text);
 
 }
 private: void professorAvailability()
 {
-	if (myProfessor.getOfficeHoursDate() == System::DateTime::Today.DayOfWeek.ToString())
+	for (int i = 0; i < myProfessor->Length; i++)
 	{
-		myProfessor.setOfficeHoursFrom("7:10 PM");
-		myProfessor.setOfficeHoursTo("8:00 PM");
-		
-		
-		if (1 >= System::DateTime::Compare(Convert::ToDateTime(myProfessor.getOfficeHoursFrom()), System::DateTime::Now)
-			&& 1 <= System::DateTime::Compare(Convert::ToDateTime(myProfessor.getOfficeHoursTo()),System::DateTime::Now))
+		if (myProfessor[i]->getName() == this->comboBox1->Text)
 		{
-			this->tbName->Text = "The professor is available.";
-		}
-		else
-		{
-			this->tbName->Text = "The professor is not available.";
-		}
 
+			myVisitor.setProfessorName(myProfessor[i]->getName());
 
+			professorDateAndHours(i);
+
+		}
 	}
+		
 	
 
 }
-private: String^ professorName()
+private: void professorDateAndHours(const int index)
 {
+	
+	int count = 0;
 
+	array<String^>^ pf = gcnew array<String^>(myProfessor[index]->getOfficeHoursDate()->Length);
 
-	if(myProfessor.getName() == this->comboBox1->Text)
+	for (int i = 0; i < myProfessor[index]->getOfficeHoursDate()->Length; i++)
 	{
-
+		pf = myProfessor[index]->getOfficeHoursDate();
 	}
+
+
+	for (int i = 0; i < pf->Length; i++)
+	{
+		if (pf[i] == System::DateTime::Today.DayOfWeek.ToString())
+		{
+			
+				if (1 >= System::DateTime::Compare(Convert::ToDateTime(myProfessor[index]->getOfficeHoursFrom(i)), System::DateTime::Now)
+					&& 1 <= System::DateTime::Compare(Convert::ToDateTime(myProfessor[index]->getOfficeHoursTo(i)), System::DateTime::Now))
+				{
+					this->tbName->Text = "The professor is available.";
+				}
+				else
+				{
+					this->tbName->Text = "The professor is not available.";
+				}
+		
+
+			
+
+
+		}
+		else
+		{
+			count++;
+		}
+	}
+
+	if (count == pf->Length)
+	{
+		
+	}
+
+
+
+	
 }
 
 };

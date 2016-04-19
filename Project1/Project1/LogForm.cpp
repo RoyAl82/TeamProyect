@@ -1,6 +1,7 @@
 #include "LogForm.h"
 #include "Visitor.h"
 #include "Display.h"
+#include "Professor.h"
 
 
 
@@ -16,4 +17,7 @@ void Main(array<String^>^ args)
 	Application::SetCompatibleTextRenderingDefault(false);
 	Project1::LogForm form;
 	Application::Run(%form);
+
+	
+
 }

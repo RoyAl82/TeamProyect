@@ -1,22 +1,40 @@
 #pragma once
-#include "People.h"
-ref class Professor : public People
+#include <msclr\marshal_cppstd.h>
+
+
+using namespace System;
+
+
+ref class Professor
 {
 public:
 	Professor();
-	Professor(String^ name, String^ officeHoursFrom, String^ officeHoursTo, String^ officeHoursDate);
+	Professor(String^ name, array<String^>^ officeHoursFrom, array<String^>^ officeHoursTo, array<String^>^ officeHoursDate);
 
-	void setOfficeHoursFrom(String^ officeHoursFrom);
-	void setOfficeHoursTo(String^ officeHoursTo);
-	void setOfficeHoursDate(String^ officeHoursDate);
+	void setOfficeHoursFrom(array<String^>^ officeHoursFrom);
+	void setOfficeHoursTo(array<String^>^ officeHoursTo);
+	void setOfficeHoursDate(array <String^>^ officeHoursDate);
 
-	String^ getOfficeHoursFrom();
-	String^ getOfficeHoursTo();
-	String^ getOfficeHoursDate();
+	void setName(String^ name);
+
+
+	String^ getName();
+	String^ Professor::getOfficeHoursDate(const int i);
+	String^ getOfficeHoursFrom(const int i);
+	String^ getOfficeHoursTo(const int i);
+
+
+	array<String^>^ getOfficeHoursDate();
+	array<String^>^ getOfficeHoursFrom();
+	array<String^>^ getOfficeHoursTo();
 private:
+	array<String^>^ officeHoursDate;
 
-	String^ officeHoursFrom;
-	String^ officeHoursTo;
-	String^ officeHoursDate;
+	array<String^>^ officeHoursFrom;
+	array<String^>^ officeHoursTo;
+	String^ name;
+
+
+
 };
 

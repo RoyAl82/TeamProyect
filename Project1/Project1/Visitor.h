@@ -1,6 +1,11 @@
 #pragma once
-#include "People.h"
-ref class Visitor : public People
+#include <msclr\marshal_cppstd.h>
+
+
+using namespace System;
+
+
+ref class Visitor
 {
 public:
 	Visitor();
@@ -11,6 +16,10 @@ public:
 	void setIDStudent(String^ idStudent);
 	void setHourOfVisit(String^ hourOfVisit);
 	void setProfessorName(String^ professorName);
+	void setName(String^ name);
+
+
+	String^ getName();
 
 	String^ getPurpose();
 	String^ getDateOfVisit();
@@ -24,6 +33,6 @@ private:
 	String^ hourOfVisit;
 	String^ idStudent;
 	String^ professorName;
-
+	String^ name;
 };
 

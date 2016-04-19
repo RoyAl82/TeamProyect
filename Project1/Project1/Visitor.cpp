@@ -5,16 +5,18 @@
 Visitor::Visitor()
 {
 }
-Visitor::Visitor(String^ name, String^ lastname, String^ purpose, String^ dateOfVisit, String^ idStudent):People(name)
+Visitor::Visitor(String^ name, String^ lastname, String^ purpose, String^ dateOfVisit, String^ idStudent)
 {
 	this->purpose = purpose;
 	this->dateOfVisit = dateOfVisit;
 	this->idStudent = idStudent;
+	this->name = name;
 }
-Visitor::Visitor(String^ name, String^ lastname, String^ purpose, String^ dateOfVisit):People(name)
+Visitor::Visitor(String^ name, String^ lastname, String^ purpose, String^ dateOfVisit)
 {
 	this->purpose = purpose;
 	this->dateOfVisit = dateOfVisit;
+	this->name = name;
 }
 
 void Visitor::setPurpose(String^ purpose)
@@ -58,4 +60,16 @@ void Visitor::setProfessorName(String^ professorName)
 String^ Visitor::getProfessorName()
 {
 	return professorName;
+}
+
+
+void Visitor::setName(String^ name)
+{
+	this->name = name;
+}
+
+
+String^ Visitor::getName()
+{
+	return name;
 }

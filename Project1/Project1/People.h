@@ -11,6 +11,7 @@ ref class People
 public:
 	People();
 	~People();
+
 	People(String^ name);
 
 	void setName(String^ name);
@@ -21,6 +22,7 @@ public:
 
 
 private:
+
 	String^ name;
 	
 
