@@ -279,6 +279,7 @@ namespace Project1 {
 
 
 			//Variables
+			
 			array<String^>^ date = gcnew array<String^>(3);
 			date[0] = "Sunday";
 			date[1] = "Monday";
@@ -303,6 +304,9 @@ namespace Project1 {
 				this->myProfessor[i]->setOfficeHoursFrom(timeFrom);
 				this->myProfessor[i]->setOfficeHoursTo(timeTo);
 			}
+			
+			//this->myProfessor = readFromFileToProffesor();
+
 
 		}
 #pragma endregion
@@ -411,13 +415,52 @@ private: void professorDateAndHours(const int index)
 
 private: array<Professor^>^ readFromFileToProffesor()
 {
+	array<Professor^>^ pf = gcnew array<Professor^>(10);
 
+	String^ fileName = "ProfessorData.csv";
+	String^ data;
+	array<String^>^ dataArray = gcnew array<String^>(20);
+
+	try
+	{
+		StreamReader^ file = File::OpenText(fileName);
+
+		
+
+		while ((data = file->ReadLine()) != nullptr)
+		{	
+			int count = 0;
+
+			array<String^>^ strData = data->Split(',');
+
+			for (int i = 0; i < data->Length; i++)
+			{
+				pf[i] = gcnew Professor;
+
+				pf[i]->setName(strData[i]);
+
+				pf[i]->setOfficeHoursDate(strData);
+			}
+
+		}
+
+	}
+	catch (Exception^ e)
+	{
+		MessageBox::Show(e->Message);
+	}
+
+	return pf;
 }
 
 private: System::Void LogForm_Load(System::Object^  sender, System::EventArgs^  e) {
 
 
-	
+	for (int i = 0; i < myProfessor->Length; i++)
+	{
+		this->comboBox1->Items->Add(myProfessor[i]->getName());
+		this->comboBox2->Items->Add(myProfessor[i]->getName());
+	}
 
 }
 };
