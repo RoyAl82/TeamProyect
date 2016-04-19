@@ -351,7 +351,11 @@ private: void professorAvailability()
 			professorDateAndHours(i);
 
 		}
-		count++;
+		else
+		{
+			count++;
+		}
+		
 		
 	}
 	if (count == myProfessor->Length)
@@ -366,17 +370,10 @@ private: void professorDateAndHours(const int index)
 	
 	int count = 0;
 
-	array<String^>^ pf = gcnew array<String^>(myProfessor[index]->getOfficeHoursDate()->Length);
 
 	for (int i = 0; i < myProfessor[index]->getOfficeHoursDate()->Length; i++)
 	{
-		pf = myProfessor[index]->getOfficeHoursDate();
-	}
-
-
-	for (int i = 0; i < pf->Length; i++)
-	{
-		if (pf[i] == System::DateTime::Today.DayOfWeek.ToString())
+		if (myProfessor[i]->getOfficeHoursDate(i) == System::DateTime::Today.DayOfWeek.ToString())
 		{
 			
 				if (1 >= System::DateTime::Compare(Convert::ToDateTime(myProfessor[index]->getOfficeHoursFrom(i)), System::DateTime::Now)
@@ -398,11 +395,13 @@ private: void professorDateAndHours(const int index)
 		{
 			count++;
 		}
+		
+		
 	}
 
-	if (count == pf->Length)
+	if (count == myProfessor[index]->getOfficeHoursDate()->Length)
 	{
-		
+		this->comboBox2->Text = "The professor does NOT have office Hours Today.";
 	}
 
 
@@ -410,6 +409,10 @@ private: void professorDateAndHours(const int index)
 	
 }
 
+private: array<Professor^>^ readFromFileToProffesor()
+{
+
+}
 
 private: System::Void LogForm_Load(System::Object^  sender, System::EventArgs^  e) {
 
