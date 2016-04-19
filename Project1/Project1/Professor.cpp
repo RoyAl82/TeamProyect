@@ -7,7 +7,7 @@ Professor::Professor()
 }
 Professor::Professor(String^ name, array<String^>^ officeHoursFrom, array<String^>^ officeHoursTo, array<String^>^ officeHoursDate)
 {
-	this->name = name;
+	this->professorName = name;
 	this->officeHoursFrom = officeHoursFrom;
 	this->officeHoursTo = officeHoursTo;
 	this->officeHoursDate = officeHoursDate;
@@ -60,13 +60,13 @@ String^ Professor::getOfficeHoursDate(const int i)
 
 void Professor::setName(String^ name)
 {
-	this->name = name;
+	this->professorName = name;
 }
 
 
 String^ Professor::getName()
 {
-	return name;
+	return professorName;
 }
 array<String^>^ Professor::getOfficeHoursFrom()
 {

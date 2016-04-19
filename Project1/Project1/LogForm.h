@@ -6,8 +6,16 @@
 
 
 
-
+using namespace System;
 using namespace System::IO;
+
+
+
+const int PROFESSOR_SIZE = 20;
+
+
+
+
 
 
 namespace Project1 {
@@ -73,16 +81,12 @@ namespace Project1 {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-
 		Visitor myVisitor;
 
-		const int PROFESSOR_SIZE = 20;
+		array< Professor^ >^ myProfessor = gcnew array< Professor^ >(PROFESSOR_SIZE);
+		//Professor myProfessor;
 
 		
-
-		array< Professor^ >^ myProfessor = gcnew array< Professor^ >(PROFESSOR_SIZE);
-
-
 		
 		
 
@@ -265,10 +269,40 @@ namespace Project1 {
 			this->Name = L"LogForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"VISITOR\'S LOG";
+			this->Load += gcnew System::EventHandler(this, &LogForm::LogForm_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
+
+
+
+
+			//Variables
+			array<String^>^ date = gcnew array<String^>(3);
+			date[0] = "Sunday";
+			date[1] = "Monday";
+			date[2] = "Tuesday";
+			array<String^>^ timeFrom = gcnew array<String^>(date->Length);
+
+			timeFrom[0] = "12:00 AM";
+			timeFrom[1] = "11:00 AM";
+			timeFrom[2] = "1:00 PM";
+
+			array<String^>^ timeTo = gcnew array<String^>(date->Length);
+
+			timeTo[0] = "1:00 PM";
+			timeTo[1] = "12:00 AM";
+			timeTo[2] = "2:00 PM";
+
+			for (int i = 0; i < PROFESSOR_SIZE; i++)
+			{
+				this->myProfessor[i] = gcnew Professor;
+				this->myProfessor[i]->setName("Pedro" + i);
+				this->myProfessor[i]->setOfficeHoursDate(date);
+				this->myProfessor[i]->setOfficeHoursFrom(timeFrom);
+				this->myProfessor[i]->setOfficeHoursTo(timeTo);
+			}
 
 		}
 #pragma endregion
@@ -295,42 +329,18 @@ private: System::Void btnSubmit_Click(System::Object^  sender, System::EventArgs
 	myVisitor.setDateOfVisit(System::DateTime::Now.ToString());
 	myVisitor.setHourOfVisit(System::DateTime::Now.ToShortTimeString());
 
-	array<String^>^ date = gcnew array<String^>(3);
-	date[0] = "Sunday";
-	date[1] = "Monday";
-	date[2] = "Tuesday";
-	array<String^>^ timeFrom = gcnew array<String^>(date->Length);
-
-	timeFrom[0] = "12:00 AM";
-	timeFrom[1] = "11:00 AM";
-	timeFrom[2] = "1:00 PM";
-
-	array<String^>^ timeTo = gcnew array<String^>(date->Length);
-
-	timeTo[0] = "1:00 PM";
-	timeTo[1] = "12:00 AM";
-	timeTo[2] = "2:00 PM";
-
-	String^ name = "Pedro";
-
-
-	myProfessor[0]->setName(name);
-
-	myProfessor[0]->setOfficeHoursDate(date);
-
-	myProfessor[0]->setOfficeHoursFrom(timeFrom);
-
-	myProfessor[0]->setOfficeHoursTo(timeTo);
-
-
+	
 	professorAvailability();
 
 	
-	myProfessor[0]->setName(this->comboBox1->Text);
+	
 
 }
+ 
 private: void professorAvailability()
 {
+	int count = 0;
+
 	for (int i = 0; i < myProfessor->Length; i++)
 	{
 		if (myProfessor[i]->getName() == this->comboBox1->Text)
@@ -341,8 +351,13 @@ private: void professorAvailability()
 			professorDateAndHours(i);
 
 		}
-	}
+		count++;
 		
+	}
+	if (count == myProfessor->Length)
+	{
+		this->tbStudentID->Text = "The professor does not exist.";
+	}
 	
 
 }
@@ -395,5 +410,12 @@ private: void professorDateAndHours(const int index)
 	
 }
 
+
+private: System::Void LogForm_Load(System::Object^  sender, System::EventArgs^  e) {
+
+
+	
+
+}
 };
 }

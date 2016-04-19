@@ -5,6 +5,7 @@
 using namespace System;
 
 
+
 ref class Professor
 {
 public:
@@ -32,7 +33,7 @@ private:
 
 	array<String^>^ officeHoursFrom;
 	array<String^>^ officeHoursTo;
-	String^ name;
+	String^ professorName;
 
 
 
