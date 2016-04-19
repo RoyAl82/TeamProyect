@@ -31,11 +31,12 @@ void Visitor::setIDStudent(String^ idStudent)
 {
 	this->idStudent = idStudent;
 }
+/*
 void Visitor::setHourOfVisit(String^ hourOfVisit)
 {
 	this->hourOfVisit = hourOfVisit;
 }
-
+*/
 String^ Visitor::getPurpose()
 {
 	return purpose;
@@ -49,10 +50,12 @@ String^ Visitor::getIDStudent()
 	return idStudent;
 }
 
+/*
 String^ Visitor::getHourOfVisit()
 {
 	return hourOfVisit;
 }
+*/
 void Visitor::setProfessorName(String^ professorName)
 {
 	this->professorName = professorName;

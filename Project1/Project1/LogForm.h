@@ -169,10 +169,7 @@ namespace Project1 {
 			// 
 			// openToolStripMenuItem
 			// 
-			this->openToolStripMenuItem->Name = L"openToolStripMenuItem";
-			this->openToolStripMenuItem->Size = System::Drawing::Size(103, 22);
-			this->openToolStripMenuItem->Text = L"Open";
-			this->openToolStripMenuItem->Click += gcnew System::EventHandler(this, &LogForm::openToolStripMenuItem_Click);
+			
 			// 
 			// editToolStripMenuItem1
 			// 
@@ -279,7 +276,7 @@ namespace Project1 {
 
 
 			//Variables
-			
+			//This Code is to test the section process until the program is ready 
 			array<String^>^ date = gcnew array<String^>(3);
 			date[0] = "Sunday";
 			date[1] = "Monday";
@@ -304,41 +301,36 @@ namespace Project1 {
 				this->myProfessor[i]->setOfficeHoursFrom(timeFrom);
 				this->myProfessor[i]->setOfficeHoursTo(timeTo);
 			}
-			
+			//This is the end of the test initialization of the professor's data
+
+
 			//this->myProfessor = readFromFileToProffesor();
 
 
 		}
 #pragma endregion
-	private: System::Void openToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-
-		
-
-		
-
-		
-	}
+	
 
 private: System::Void btnSubmit_Click(System::Object^  sender, System::EventArgs^  e) {
 	
 	
-	this->tbStudentID->Text = System::DateTime::Today.DayOfWeek.ToString();
+	//this->tbStudentID->Text = (System::DateTime::Today.DayOfWeek.ToString());
 
-	this->comboBox2->Text = System::DateTime::Now.ToString();
+	//this->comboBox2->Text = (System::DateTime::Now.ToString());
 
 	myVisitor.setIDStudent(this->tbStudentID->Text);
 
 	myVisitor.setName(this->tbName->Text);
 	myVisitor.setPurpose(this->comboBox2->Text);
-	myVisitor.setDateOfVisit(System::DateTime::Now.ToString());
-	myVisitor.setHourOfVisit(System::DateTime::Now.ToShortTimeString());
+	myVisitor.setDateOfVisit((System::DateTime::Now.ToString()));
+	//myVisitor.setHourOfVisit((System::DateTime::Now.ToShortTimeString()));
 
 	
 	professorAvailability();
 
 	
-	
-
+	this->tbStudentID->Text = myVisitor.getDateOfVisit();
+	//this->comboBox2->Text = myVisitor.getHourOfVisit();
 }
  
 private: void professorAvailability()
@@ -377,11 +369,11 @@ private: void professorDateAndHours(const int index)
 
 	for (int i = 0; i < myProfessor[index]->getOfficeHoursDate()->Length; i++)
 	{
-		if (myProfessor[i]->getOfficeHoursDate(i) == System::DateTime::Today.DayOfWeek.ToString())
+		if (myProfessor[i]->getOfficeHoursDate(i) == (System::DateTime::Today.DayOfWeek.ToString()))
 		{
 			
-				if (1 >= System::DateTime::Compare(Convert::ToDateTime(myProfessor[index]->getOfficeHoursFrom(i)), System::DateTime::Now)
-					&& 1 <= System::DateTime::Compare(Convert::ToDateTime(myProfessor[index]->getOfficeHoursTo(i)), System::DateTime::Now))
+				if (1 >= System::DateTime::Compare(Convert::ToDateTime(myProfessor[index]->getOfficeHoursFrom(i)), (System::DateTime::Now))
+					&& 1 <= System::DateTime::Compare(Convert::ToDateTime(myProfessor[index]->getOfficeHoursTo(i)), (System::DateTime::Now)))
 				{
 					this->tbName->Text = "The professor is available.";
 				}
