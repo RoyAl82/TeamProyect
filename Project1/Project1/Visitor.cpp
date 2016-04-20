@@ -50,12 +50,7 @@ String^ Visitor::getIDStudent()
 	return idStudent;
 }
 
-/*
-String^ Visitor::getHourOfVisit()
-{
-	return hourOfVisit;
-}
-*/
+
 void Visitor::setProfessorName(String^ professorName)
 {
 	this->professorName = professorName;

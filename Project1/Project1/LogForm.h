@@ -297,7 +297,7 @@ private: System::Void btnSubmit_Click(System::Object^  sender, System::EventArgs
 	}
 	else
 	{
-		myVisitor.setIDStudent("Not Student");
+		myVisitor.setIDStudent("Not a Student");
 
 	}
 	

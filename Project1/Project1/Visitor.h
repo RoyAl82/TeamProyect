@@ -14,7 +14,7 @@ public:
 	void setPurpose(String^ purpose);
 	void setDateOfVisit(String^ dateOfVisit);
 	void setIDStudent(String^ idStudent);
-	//void setHourOfVisit(String^ hourOfVisit);
+	
 	void setProfessorName(String^ professorName);
 	void setName(String^ name);
 
@@ -24,13 +24,13 @@ public:
 	String^ getPurpose();
 	String^ getDateOfVisit();
 	String^ getIDStudent();
-	//String^ getHourOfVisit();
+	
 	String^ getProfessorName();
 private:
 
 	String^ purpose;
 	String^ dateOfVisit;
-	//String^ hourOfVisit;
+	
 	String^ idStudent;
 	String^ professorName;
 	String^ name;

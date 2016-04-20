@@ -131,14 +131,12 @@
     <ClInclude Include="LogForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="People.h" />
     <ClInclude Include="Professor.h" />
     <ClInclude Include="Visitor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Display.cpp" />
     <ClCompile Include="LogForm.cpp" />
-    <ClCompile Include="People.cpp" />
     <ClCompile Include="Professor.cpp" />
     <ClCompile Include="Visitor.cpp" />
   </ItemGroup>
