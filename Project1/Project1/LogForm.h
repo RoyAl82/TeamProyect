@@ -1,7 +1,7 @@
 #pragma once
 #include "Visitor.h"
 #include "Professor.h"
-#include "Display.h"
+
 
 
 
@@ -10,8 +10,7 @@ using namespace System;
 using namespace System::IO;
 
 
-//Needs to be delete it
-const int PROFESSOR_SIZE = 20;
+
 
 
 
@@ -85,7 +84,7 @@ namespace Project1 {
 
 		Visitor myVisitor;
 
-		//array< Professor^ >^ myProfessor = gcnew array< Professor^ >(PROFESSOR_SIZE);
+		
 		array<Professor^>^ myProfessor;
 
 		
