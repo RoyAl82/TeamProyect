@@ -4,6 +4,12 @@
 
 Professor::Professor()
 {
+	for (int i = 0; i < 7; i++)
+	{
+		this->officeHoursDate[i] = " ";
+		this->officeHoursFrom[i] = " ";
+		this->officeHoursTo[i] = " ";
+	}
 }
 Professor::Professor(String^ name, array<String^>^ officeHoursFrom, array<String^>^ officeHoursTo, array<String^>^ officeHoursDate)
 {
@@ -12,40 +18,52 @@ Professor::Professor(String^ name, array<String^>^ officeHoursFrom, array<String
 	this->officeHoursTo = officeHoursTo;
 	this->officeHoursDate = officeHoursDate;
 }
-void Professor::setOfficeHoursFrom(array<String^>^ officeHoursFrom)
+void Professor::setOfficeHoursFrom(String^ officeHoursFrom)
 {
-	this->officeHoursFrom = gcnew array<String^>(officeHoursFrom->Length);
-
-	for (int i = 0; i < officeHoursFrom->Length; i++)
+	for (int i = 0; i < this->officeHoursFrom->Length; i++)
 	{
-		this->officeHoursFrom[i] = officeHoursFrom[i];
+		if (this->officeHoursFrom[i] == " ")
+		{
+			this->officeHoursFrom[i] = officeHoursFrom;
+			break;
+		}
+
 	}
 }
 String^ Professor::getOfficeHoursFrom(const int i)
 {
 	return officeHoursFrom[i];
 }
-void Professor::setOfficeHoursTo(array<String^>^ officeHoursTo)
+void Professor::setOfficeHoursTo(String^ officeHoursTo)
 {
-	this->officeHoursTo = gcnew array<String^>(officeHoursTo->Length);
-
-	for (int i = 0; i < officeHoursTo->Length; i++)
+	for (int i = 0; i < this->officeHoursTo->Length; i++)
 	{
-		this->officeHoursTo[i] = officeHoursTo[i];
+		if (this->officeHoursTo[i] == " ")
+		{
+			this->officeHoursTo[i] = officeHoursTo;
+			break;
+		}
+
 	}
 }
 String^ Professor::getOfficeHoursTo(const int i)
 {
 	return officeHoursTo[i];
 }
-void Professor::setOfficeHoursDate(array <String^>^ officeHoursDate)
+void Professor::setOfficeHoursDate(String^ officeHoursDate)
 {
-	this->officeHoursDate = gcnew array<String^>(officeHoursDate->Length);
-
 	for (int i = 0; i < officeHoursDate->Length; i++)
 	{
-		this->officeHoursDate[i] = officeHoursDate[i];
+		if (this->officeHoursDate[i] == " ")
+		{
+			this->officeHoursDate[i] = officeHoursDate;
+			break;
+		}
+
 	}
+	
+
+	
 	
 }
 array<String^>^ Professor::getOfficeHoursDate()

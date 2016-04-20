@@ -10,7 +10,7 @@ using namespace System;
 using namespace System::IO;
 
 
-
+//Needs to be delete it
 const int PROFESSOR_SIZE = 20;
 
 
@@ -81,10 +81,12 @@ namespace Project1 {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
+
+
 		Visitor myVisitor;
 
-		array< Professor^ >^ myProfessor = gcnew array< Professor^ >(PROFESSOR_SIZE);
-		//Professor myProfessor;
+		//array< Professor^ >^ myProfessor = gcnew array< Professor^ >(PROFESSOR_SIZE);
+		array<Professor^>^ myProfessor;
 
 		
 		
@@ -276,6 +278,7 @@ namespace Project1 {
 
 
 			//Variables
+			/*
 			//This Code is to test the section process until the program is ready 
 			array<String^>^ date = gcnew array<String^>(3);
 			date[0] = "Sunday";
@@ -302,9 +305,9 @@ namespace Project1 {
 				this->myProfessor[i]->setOfficeHoursTo(timeTo);
 			}
 			//This is the end of the test initialization of the professor's data
+			*/
 
-
-			//this->myProfessor = readFromFileToProffesor();
+			this->myProfessor = readFromFileToProffesor();
 
 
 		}
@@ -314,23 +317,21 @@ namespace Project1 {
 private: System::Void btnSubmit_Click(System::Object^  sender, System::EventArgs^  e) {
 	
 	
-	//this->tbStudentID->Text = (System::DateTime::Today.DayOfWeek.ToString());
-
-	//this->comboBox2->Text = (System::DateTime::Now.ToString());
+	
 
 	myVisitor.setIDStudent(this->tbStudentID->Text);
 
 	myVisitor.setName(this->tbName->Text);
 	myVisitor.setPurpose(this->comboBox2->Text);
 	myVisitor.setDateOfVisit((System::DateTime::Now.ToString()));
-	//myVisitor.setHourOfVisit((System::DateTime::Now.ToShortTimeString()));
+	
 
 	
 	professorAvailability();
 
 	
 	this->tbStudentID->Text = myVisitor.getDateOfVisit();
-	//this->comboBox2->Text = myVisitor.getHourOfVisit();
+	
 }
  
 private: void professorAvailability()
@@ -356,7 +357,7 @@ private: void professorAvailability()
 	}
 	if (count == myProfessor->Length)
 	{
-		this->tbStudentID->Text = "The professor does not exist.";
+		MessageBox::Show("The professor you entered does not exist.");
 	}
 	
 
@@ -369,22 +370,19 @@ private: void professorDateAndHours(const int index)
 
 	for (int i = 0; i < myProfessor[index]->getOfficeHoursDate()->Length; i++)
 	{
-		if (myProfessor[i]->getOfficeHoursDate(i) == (System::DateTime::Today.DayOfWeek.ToString()))
+		if (myProfessor[index]->getOfficeHoursDate(i) == (System::DateTime::Today.DayOfWeek.ToString()))
 		{
 			
 				if (1 >= System::DateTime::Compare(Convert::ToDateTime(myProfessor[index]->getOfficeHoursFrom(i)), (System::DateTime::Now))
 					&& 1 <= System::DateTime::Compare(Convert::ToDateTime(myProfessor[index]->getOfficeHoursTo(i)), (System::DateTime::Now)))
 				{
-					this->tbName->Text = "The professor is available.";
+					MessageBox::Show("The professor is available.");
 				}
 				else
 				{
-					this->tbName->Text = "The professor is not available.";
+					MessageBox::Show("The professor is not available.");
 				}
 		
-
-			
-
 
 		}
 		else
@@ -397,7 +395,7 @@ private: void professorDateAndHours(const int index)
 
 	if (count == myProfessor[index]->getOfficeHoursDate()->Length)
 	{
-		this->comboBox2->Text = "The professor does NOT have office Hours Today.";
+		MessageBox::Show("The professor does NOT have office Hours Today.");					  
 	}
 
 
@@ -407,34 +405,57 @@ private: void professorDateAndHours(const int index)
 
 private: array<Professor^>^ readFromFileToProffesor()
 {
-	array<Professor^>^ pf = gcnew array<Professor^>(10);
+	array<Professor^>^ pf = gcnew array<Professor^>(20);
 
 	String^ fileName = "ProfessorData.csv";
 	String^ data;
-	array<String^>^ dataArray = gcnew array<String^>(20);
+	array<String^>^ dataArray = gcnew array<String^>(100);
+	array<String^>^ dataArrayTime = gcnew array<String^>(100);
 
+	int count = 0;
 	try
 	{
 		StreamReader^ file = File::OpenText(fileName);
 
-		
-
+		int index = 0;
+		bool nextProfessor = false;
 		while ((data = file->ReadLine()) != nullptr)
 		{	
-			int count = 0;
+			int i = 0;
 
 			array<String^>^ strData = data->Split(',');
+			
 
-			for (int i = 0; i < data->Length; i++)
+			if (!nextProfessor)
 			{
-				pf[i] = gcnew Professor;
-
-				pf[i]->setName(strData[i]);
-
-				pf[i]->setOfficeHoursDate(strData);
+				pf[index] = gcnew Professor;
+				pf[index]->setName(strData[i]);
+			}
+			if (strData[i + 1] != "")
+			{
+				pf[index]->setOfficeHoursDate(strData[i + 1]);
+			}
+			
+			if (strData[i + 2] != "")
+			{
+				pf[index]->setOfficeHoursFrom(strData[i + 2]);
+			}
+			
+			if (strData[i + 3] != "")
+			{
+				pf[index]->setOfficeHoursTo(strData[i + 3]);
+			}
+						
+			if (!(nextProfessor = file->Peek().Equals(',')))
+			{
+				index++;
+				count++;
 			}
 
+
 		}
+
+		file->Close();
 
 	}
 	catch (Exception^ e)
@@ -442,7 +463,21 @@ private: array<Professor^>^ readFromFileToProffesor()
 		MessageBox::Show(e->Message);
 	}
 
-	return pf;
+	if (count != 0)
+	{
+		array<Professor^>^ pFinal = gcnew array<Professor^>(count);
+
+		for (int j = 0; j < count; j++)
+		{
+			pFinal[j] = pf[j];
+		}
+		return pFinal;
+	}
+	else
+	{
+		return nullptr;
+	}
+	
 }
 
 private: System::Void LogForm_Load(System::Object^  sender, System::EventArgs^  e) {
@@ -450,8 +485,8 @@ private: System::Void LogForm_Load(System::Object^  sender, System::EventArgs^  
 
 	for (int i = 0; i < myProfessor->Length; i++)
 	{
-		this->comboBox1->Items->Add(myProfessor[i]->getName());
-		this->comboBox2->Items->Add(myProfessor[i]->getName());
+		this->comboBox1->Items->Add(this->myProfessor[i]->getName());
+		this->comboBox2->Items->Add(this->myProfessor[i]->getName());
 	}
 
 }
