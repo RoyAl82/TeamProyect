@@ -125,9 +125,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Display.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="LogForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -135,7 +132,6 @@
     <ClInclude Include="Visitor.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Display.cpp" />
     <ClCompile Include="LogForm.cpp" />
     <ClCompile Include="Professor.cpp" />
     <ClCompile Include="Visitor.cpp" />
@@ -149,9 +145,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Display.resx">
-      <DependentUpon>Display.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="LogForm.resx">
       <DependentUpon>LogForm.h</DependentUpon>
     </EmbeddedResource>
