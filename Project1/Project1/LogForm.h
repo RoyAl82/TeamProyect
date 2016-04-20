@@ -278,35 +278,7 @@ namespace Project1 {
 
 
 			//Variables
-			/*
-			//This Code is to test the section process until the program is ready 
-			array<String^>^ date = gcnew array<String^>(3);
-			date[0] = "Sunday";
-			date[1] = "Monday";
-			date[2] = "Tuesday";
-			array<String^>^ timeFrom = gcnew array<String^>(date->Length);
-
-			timeFrom[0] = "12:00 AM";
-			timeFrom[1] = "11:00 AM";
-			timeFrom[2] = "1:00 PM";
-
-			array<String^>^ timeTo = gcnew array<String^>(date->Length);
-
-			timeTo[0] = "1:00 PM";
-			timeTo[1] = "12:00 AM";
-			timeTo[2] = "2:00 PM";
-
-			for (int i = 0; i < PROFESSOR_SIZE; i++)
-			{
-				this->myProfessor[i] = gcnew Professor;
-				this->myProfessor[i]->setName("Pedro" + i);
-				this->myProfessor[i]->setOfficeHoursDate(date);
-				this->myProfessor[i]->setOfficeHoursFrom(timeFrom);
-				this->myProfessor[i]->setOfficeHoursTo(timeTo);
-			}
-			//This is the end of the test initialization of the professor's data
-			*/
-
+			
 			this->myProfessor = readFromFileToProffesor();
 
 
@@ -318,20 +290,57 @@ private: System::Void btnSubmit_Click(System::Object^  sender, System::EventArgs
 	
 	
 	
+	if (this->tbStudentID->Text != "")
+	{
+		myVisitor.setIDStudent(this->tbStudentID->Text);
 
-	myVisitor.setIDStudent(this->tbStudentID->Text);
+	}
+	else
+	{
+		myVisitor.setIDStudent("Not Student");
 
-	myVisitor.setName(this->tbName->Text);
-	myVisitor.setPurpose(this->comboBox2->Text);
-	myVisitor.setDateOfVisit((System::DateTime::Now.ToString()));
+	}
 	
+	
+	if (this->tbName->Text != "")
+	{
+		myVisitor.setName(this->tbName->Text);
 
-	
-	professorAvailability();
+	}
+	else
+	{
+		MessageBox::Show("Enter your name to submit.");
+	}
+	if (this->comboBox1->Text != "")
+	{
+		professorAvailability();
+		myVisitor.setDateOfVisit((System::DateTime::Now.ToString()));
+	}
+	else
+	{
+		MessageBox::Show("Enter the Professor's name to submit.");
+	}
 
+	if (this->comboBox2->Text != "")
+	{
+		myVisitor.setPurpose(this->comboBox2->Text);
+	}
+	else
+	{
+		MessageBox::Show("Enter the Reasons of your visit to submit.");
+	}
 	
-	this->tbStudentID->Text = myVisitor.getDateOfVisit();
-	
+	if (this->myVisitor.getDateOfVisit() != "" && this->myVisitor.getProfessorName() != ""
+		&& this->myVisitor.getProfessorName() != "" && this->myVisitor.getPurpose() != "" && this->myVisitor.getIDStudent() != "")
+	{
+		this->tbName->ResetText();
+		this->tbStudentID->ResetText();
+		this->comboBox1->ResetText();
+		this->comboBox2->ResetText();
+
+		writeDataToFile();
+
+	}
 }
  
 private: void professorAvailability()
@@ -398,9 +407,6 @@ private: void professorDateAndHours(const int index)
 		MessageBox::Show("The professor does NOT have office Hours Today.");					  
 	}
 
-
-
-	
 }
 
 private: array<Professor^>^ readFromFileToProffesor()
@@ -409,8 +415,7 @@ private: array<Professor^>^ readFromFileToProffesor()
 
 	String^ fileName = "ProfessorData.csv";
 	String^ data;
-	array<String^>^ dataArray = gcnew array<String^>(100);
-	array<String^>^ dataArrayTime = gcnew array<String^>(100);
+	
 
 	int count = 0;
 	try
@@ -479,16 +484,78 @@ private: array<Professor^>^ readFromFileToProffesor()
 	}
 	
 }
+private: array<String^>^ readFromFileToReasons()
+{
+	
+
+	String^ fileName = "Common Reasons.csv";
+	String^ data;
+	array<String^>^ dataArray = gcnew array<String^>(100);
+	
+
+	int count = 0;
+	try
+	{
+		StreamReader^ file = File::OpenText(fileName);
+
+		int index = 0;
+		bool nextReason = false;
+		while ((data = file->ReadLine()) != nullptr)
+		{
+			
+			dataArray[index] = data;
+
+			
+			if (!(nextReason = file->Peek().Equals(',')))
+			{
+				index++;
+				count++;
+			}
+
+
+		}
+
+		file->Close();
+
+	}
+	catch (Exception^ e)
+	{
+		MessageBox::Show(e->Message);
+	}
+
+	if (count != 0)
+	{
+		array<String^>^ pFinal = gcnew array<String^>(count);
+
+		for (int j = 0; j < count; j++)
+		{
+			pFinal[j] = dataArray[j];
+		}
+		return pFinal;
+	}
+	else
+	{
+		return nullptr;
+	}
+
+}
 
 private: System::Void LogForm_Load(System::Object^  sender, System::EventArgs^  e) {
 
+	array<String^>^ data = readFromFileToReasons();
 
 	for (int i = 0; i < myProfessor->Length; i++)
 	{
 		this->comboBox1->Items->Add(this->myProfessor[i]->getName());
-		this->comboBox2->Items->Add(this->myProfessor[i]->getName());
+		this->comboBox2->Items->Add(data[i]);
 	}
 
 }
+
+private: void writeDataToFile()
+{
+
+}
+
 };
 }
