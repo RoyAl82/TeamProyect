@@ -554,7 +554,9 @@ private: System::Void LogForm_Load(System::Object^  sender, System::EventArgs^  
 
 private: void writeDataToFile()
 {
-
+	//The code goes here
+	//Save the data store in myVisitors using the getters
+	//
 }
 
 };
