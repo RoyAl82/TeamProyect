@@ -1,0 +1,4 @@
+﻿  LogForm.cpp
+  LogForm.obj : /DEBUG:FASTLINK is not supported when managed code is present; restarting link with /DEBUG:FULL
+  Project1.vcxproj -> C:\Users\Roicxy\Documents\share-new\TeamProyect\TeamProyect\Project1\Debug\Project1.exe
+  Project1.vcxproj -> C:\Users\Roicxy\Documents\share-new\TeamProyect\TeamProyect\Project1\Debug\Project1.pdb (Partial PDB)
