@@ -1,0 +1,7 @@
+﻿  CheckIn.cpp
+  VisitorLog.cpp
+  Generating Code...
+  .NETFramework,Version=v4.5.2.AssemblyAttributes.cpp
+  CheckIn.obj : /DEBUG:FASTLINK is not supported when managed code is present; restarting link with /DEBUG:FULL
+  VisitorLog.vcxproj -> C:\Users\Roicxy\Documents\share-new\TeamProyect\TeamProyect\VisitorLog\Debug\VisitorLog.exe
+  VisitorLog.vcxproj -> C:\Users\Roicxy\Documents\share-new\TeamProyect\TeamProyect\VisitorLog\Debug\VisitorLog.pdb (Partial PDB)
