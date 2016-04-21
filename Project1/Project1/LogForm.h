@@ -57,16 +57,16 @@ namespace Project1 {
 
 	private: System::Windows::Forms::Button^  btnSubmit;
 
-	private: System::Windows::Forms::MenuStrip^  menuStrip1;
-	private: System::Windows::Forms::ToolStripMenuItem^  fileToolStripMenuItem1;
-	private: System::Windows::Forms::ToolStripMenuItem^  openToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^  editToolStripMenuItem1;
-	private: System::Windows::Forms::ToolStripMenuItem^  exitToolStripMenuItem1;
-	private: System::Windows::Forms::ToolStripMenuItem^  helpToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^  aboutToolStripMenuItem;
 
 
-	private: System::Windows::Forms::FolderBrowserDialog^  folderBrowserDialog;
+
+
+
+
+
+
+
+
 	private: System::Windows::Forms::TextBox^  tbName;
 	private: System::Windows::Forms::Label^  lbName;
 	private: System::Windows::Forms::Label^  lbProfName;
@@ -103,21 +103,12 @@ namespace Project1 {
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
 			this->btnSubmit = (gcnew System::Windows::Forms::Button());
-			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
-			this->fileToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->openToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->editToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->exitToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->helpToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->aboutToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->folderBrowserDialog = (gcnew System::Windows::Forms::FolderBrowserDialog());
 			this->tbName = (gcnew System::Windows::Forms::TextBox());
 			this->lbName = (gcnew System::Windows::Forms::Label());
 			this->lbProfName = (gcnew System::Windows::Forms::Label());
 			this->lbPurpose = (gcnew System::Windows::Forms::Label());
 			this->lbStudentID = (gcnew System::Windows::Forms::Label());
 			this->tbStudentID = (gcnew System::Windows::Forms::TextBox());
-			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// comboBox1
@@ -145,57 +136,6 @@ namespace Project1 {
 			this->btnSubmit->Text = L"Submit";
 			this->btnSubmit->UseVisualStyleBackColor = true;
 			this->btnSubmit->Click += gcnew System::EventHandler(this, &LogForm::btnSubmit_Click);
-			// 
-			// menuStrip1
-			// 
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-				this->fileToolStripMenuItem1,
-					this->helpToolStripMenuItem
-			});
-			this->menuStrip1->Location = System::Drawing::Point(0, 0);
-			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(1008, 24);
-			this->menuStrip1->TabIndex = 5;
-			this->menuStrip1->Text = L"menuStrip1";
-			// 
-			// fileToolStripMenuItem1
-			// 
-			this->fileToolStripMenuItem1->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
-				this->openToolStripMenuItem,
-					this->editToolStripMenuItem1, this->exitToolStripMenuItem1
-			});
-			this->fileToolStripMenuItem1->Name = L"fileToolStripMenuItem1";
-			this->fileToolStripMenuItem1->Size = System::Drawing::Size(37, 20);
-			this->fileToolStripMenuItem1->Text = L"File";
-			// 
-			// openToolStripMenuItem
-			// 
-			
-			// 
-			// editToolStripMenuItem1
-			// 
-			this->editToolStripMenuItem1->Name = L"editToolStripMenuItem1";
-			this->editToolStripMenuItem1->Size = System::Drawing::Size(103, 22);
-			this->editToolStripMenuItem1->Text = L"Edit";
-			// 
-			// exitToolStripMenuItem1
-			// 
-			this->exitToolStripMenuItem1->Name = L"exitToolStripMenuItem1";
-			this->exitToolStripMenuItem1->Size = System::Drawing::Size(103, 22);
-			this->exitToolStripMenuItem1->Text = L"Exit";
-			// 
-			// helpToolStripMenuItem
-			// 
-			this->helpToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->aboutToolStripMenuItem });
-			this->helpToolStripMenuItem->Name = L"helpToolStripMenuItem";
-			this->helpToolStripMenuItem->Size = System::Drawing::Size(44, 20);
-			this->helpToolStripMenuItem->Text = L"Help";
-			// 
-			// aboutToolStripMenuItem
-			// 
-			this->aboutToolStripMenuItem->Name = L"aboutToolStripMenuItem";
-			this->aboutToolStripMenuItem->Size = System::Drawing::Size(107, 22);
-			this->aboutToolStripMenuItem->Text = L"About";
 			// 
 			// tbName
 			// 
@@ -259,27 +199,15 @@ namespace Project1 {
 			this->Controls->Add(this->lbProfName);
 			this->Controls->Add(this->lbName);
 			this->Controls->Add(this->tbName);
-			this->Controls->Add(this->menuStrip1);
 			this->Controls->Add(this->btnSubmit);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->comboBox2);
-			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"LogForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"VISITOR\'S LOG";
 			this->Load += gcnew System::EventHandler(this, &LogForm::LogForm_Load);
-			this->menuStrip1->ResumeLayout(false);
-			this->menuStrip1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
-
-
-
-
-			//Variables
-			
-			this->myProfessor = readFromFileToProffesor();
-
 
 		}
 #pragma endregion
@@ -289,57 +217,55 @@ private: System::Void btnSubmit_Click(System::Object^  sender, System::EventArgs
 	
 	
 	
-	if (this->tbStudentID->Text != "")
-	{
-		myVisitor.setIDStudent(this->tbStudentID->Text);
-
-	}
-	else
-	{
-		myVisitor.setIDStudent("Not a Student");
-
-	}
 	
-	
-	if (this->tbName->Text != "")
+	if (this->tbName->Text == "")
 	{
-		myVisitor.setName(this->tbName->Text);
-
-	}
-	else
-	{
+		
 		MessageBox::Show("Enter your name to submit.");
 	}
-	if (this->comboBox1->Text != "")
-	{
-		professorAvailability();
-		myVisitor.setDateOfVisit((System::DateTime::Now.ToString()));
-	}
-	else
+	else if (this->comboBox1->Text == "")
 	{
 		MessageBox::Show("Enter the Professor's name to submit.");
 	}
-
-	if (this->comboBox2->Text != "")
-	{
-		myVisitor.setPurpose(this->comboBox2->Text);
-	}
-	else
+	else if (this->comboBox2->Text == "")
 	{
 		MessageBox::Show("Enter the Reasons of your visit to submit.");
 	}
-	
-	if (this->myVisitor.getDateOfVisit() != "" && this->myVisitor.getProfessorName() != ""
-		&& this->myVisitor.getProfessorName() != "" && this->myVisitor.getPurpose() != "" && this->myVisitor.getIDStudent() != "")
+	else
 	{
-		this->tbName->ResetText();
-		this->tbStudentID->ResetText();
-		this->comboBox1->ResetText();
-		this->comboBox2->ResetText();
+		if (this->tbStudentID->Text == "")
+		{
 
-		writeDataToFile();
+			myVisitor.setIDStudent("Not a Student");
+		}
+		else
+		{
+			myVisitor.setIDStudent(this->tbStudentID->Text);
+		}
+
+		myVisitor.setName(this->tbName->Text);
+
+		professorAvailability();
+
+		myVisitor.setDateOfVisit((System::DateTime::Now.ToString()));
+
+		myVisitor.setPurpose(this->comboBox2->Text);
+
+		if (this->myVisitor.getDateOfVisit() != "" && this->myVisitor.getProfessorName() != ""
+			&& this->myVisitor.getProfessorName() != "" && this->myVisitor.getPurpose() != "" && this->myVisitor.getIDStudent() != "")
+		{
+			this->tbName->ResetText();
+			this->tbStudentID->ResetText();
+			this->comboBox1->ResetText();
+			this->comboBox2->ResetText();
+
+			writeDataToFile();
+
+		}
 
 	}
+
+	
 }
  
 private: void professorAvailability()
@@ -540,7 +466,7 @@ private: array<String^>^ readFromFileToReasons()
 }
 
 private: System::Void LogForm_Load(System::Object^  sender, System::EventArgs^  e) {
-
+	this->myProfessor = readFromFileToProffesor();
 	array<String^>^ data = readFromFileToReasons();
 
 	for (int i = 0; i < myProfessor->Length; i++)
